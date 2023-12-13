@@ -1,0 +1,35 @@
+﻿@model List<SecurePasswordManager.Models.PasswordRecord>
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Ensure this is the path to your layout file
+}
+
+<h1>Dashboard</h1>
+
+<table class="table">
+    <thead>
+    <th>Username</th>
+    <th>Platform Link or Name</th>
+    <th>Password</th>
+    <th>Additional Info</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+        @foreach (var userrecord in Model)
+        {
+            <tr>
+                <td>@userrecord.Username</td>
+                <td><a href="@userrecord.PlatformName" target="_blank">@userrecord.PlatformName</a></td>
+                <td>@userrecord.Password</td>
+                <td>@userrecord.AdditionalInfo</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="@Url.Action("View", "PasswordRecords", new { id = userrecord.RecordId })" role="button">View</a>
+                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "PasswordRecords", new { id = userrecord.RecordId })" role="button">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary btn-lg" href="@Url.Action("Add", "PasswordRecords")" role="button">Add New Password</a>
+<a class="btn btn-danger btn-lg" href="@Url.Action("Logout", "Account")" role="button">Log Out</a>

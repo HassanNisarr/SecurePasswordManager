@@ -1,0 +1,32 @@
+﻿@model SecurePasswordManager.Models.UpdatePasswordRecordViewModel
+@{
+}
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 login-form-1">
+            <h3>Update Record</h3>
+            <form method="post" action="View" class="mt-5">
+                <div class="mb-3">
+                    <label for="" class="form-label">RecordId</label>
+                    <input type="text" class="form-control" asp-for="RecordId" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Platform Name</label>
+                    <input type="text" class="form-control" asp-for="PlatformName">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input type="text" class="form-control" asp-for="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Additional Info</label>
+                    <input type="text" class="form-control" asp-for="AdditionalInfo">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

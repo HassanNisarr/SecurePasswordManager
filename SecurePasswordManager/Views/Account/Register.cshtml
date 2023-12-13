@@ -1,0 +1,46 @@
+﻿@model SecurePasswordManager.Models.RegistrationViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 login-form-1">
+            <h3><i class="fas fa-user-plus"></i> Sign Up</h3>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <span asp-validation-for="Username" class="text-danger"></span>
+                <div class="form-group">
+                    <div class="input-group">
+                       
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "User name" })
+                    </div>
+                 
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                       
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Sign Up" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
